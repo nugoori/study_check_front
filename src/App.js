@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
 
 function App() {
+
+  const handleInputChange = () => {
+  
+  }
+
+  const handleSignUpSubmit = () => {
+    axios.post("http://localhost:8080/auth/signup", {
+      email: "1111@qwer.com",
+      password: "qwer1234",
+      username: "김준일"
+    })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>
+        <h1>
+          회원가입
+        </h1>
+        <div><input type="text" name='email' placeholder='이메일 입력' onChange={handleInputChange} /></div>
+        <div><input type="password" name='password' placeholder='비밀번호 입력' onChange={handleInputChange} /></div>
+        <div><input type="text" name='username' placeholder='사용자 이름 입력' onChange={handleInputChange} /></div>
+        <button onClick={handleSignUpSubmit}>가입하기</button>
+      </div>
+    </>
   );
 }
 
